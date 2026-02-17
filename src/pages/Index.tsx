@@ -1,21 +1,33 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  Truck, Plane, Ship, Warehouse, ShoppingCart, Thermometer, Package, Zap, ArrowRight, MapPin, Phone, Clock, Shield, Globe, Users,
+  Truck, Plane, Ship, Warehouse, ShoppingCart, Thermometer, Package, Zap, ArrowRight, MapPin, Phone, Clock, Shield, Globe, Users, Star, SmilePlus, Briefcase, HeartHandshake, HardHat,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-logistics.jpg";
 import warehouseImage from "@/assets/about-warehouse.jpg";
+import client1 from "@/assets/clients/client-1.avif";
+import client2 from "@/assets/clients/client-2.avif";
+import client3 from "@/assets/clients/client-3.avif";
+import client4 from "@/assets/clients/client-4.avif";
+import client5 from "@/assets/clients/client-5.avif";
+import client6 from "@/assets/clients/client-6.avif";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const services = [
-  { icon: Truck, title: "Local Logistics", desc: "Multi-faceted logistics and transportation solutions across Nigeria." },
-  { icon: Ship, title: "Sea Freight", desc: "Reliable sea freight through global carrier partnerships." },
-  { icon: Plane, title: "Air Freight", desc: "Global deliveries across 200+ countries worldwide." },
-  { icon: Warehouse, title: "Warehousing", desc: "Secure, managed storage facilities nationwide." },
-  { icon: ShoppingCart, title: "E-Commerce", desc: "End-to-end order fulfillment for online businesses." },
-  { icon: Thermometer, title: "Cold Chain", desc: "Temperature-controlled medical & pharma shipments." },
-  { icon: Package, title: "Haulage", desc: "Fleet ranging from 1.5-ton vans to 30-ton trucks." },
-  { icon: Zap, title: "Express Delivery", desc: "Same-day and next-day deliveries nationwide." },
+  { icon: Truck, title: "Corporate Logistics", desc: "We help companies prove their impact, by providing efficient delivery solutions that match their specific needs." },
+  { icon: ShoppingCart, title: "E-Commerce & SMEs", desc: "Specialized logistics services designed to optimize speedy retail support for e-commerce and SME market segments." },
+  { icon: Globe, title: "International Logistics", desc: "Cross-border logistics services to help businesses execute expansion plans across Africa and beyond." },
+  { icon: Package, title: "General Haulage", desc: "Trusted with any size of shipment regardless of complexity, we offer wholistic solutions." },
+  { icon: Thermometer, title: "Cold Chain Delivery", desc: "Expert handling of diagnostic biological samples and clinical supplies with temperature-controlled shipments." },
+  { icon: Zap, title: "Express Delivery", desc: "Same-day and next-day deliveries. We deliver to remote areas no matter how challenging the terrain." },
+  { icon: Warehouse, title: "Warehousing", desc: "Safe and secure storage facilities nationwide with CCTV, physical security, and stock management." },
+  { icon: Ship, title: "Air/Sea Freight", desc: "Well-established global network facilitating seamless freight operations to international destinations." },
 ];
 
 const stats = [
@@ -23,6 +35,43 @@ const stats = [
   { value: "200+", label: "Countries Served" },
   { value: "36+", label: "States Covered" },
   { value: "3,600+", label: "Shareholders" },
+];
+
+const counterStats = [
+  { icon: SmilePlus, value: "500+", label: "Happy Clients" },
+  { icon: Briefcase, value: "1,200+", label: "Projects" },
+  { icon: HeartHandshake, value: "50,000+", label: "Hours Of Support" },
+  { icon: HardHat, value: "150+", label: "Hard Workers" },
+];
+
+const clients = [client1, client2, client3, client4, client5, client6];
+
+const testimonials = [
+  {
+    name: "Kwame Amoah",
+    role: "CEO, Tech Innovate",
+    text: "TRANEX's human-centered analytics have empowered our decision-making process and led to remarkable outcomes.",
+  },
+  {
+    name: "Amina Soweto",
+    role: "CTO, InnovateX",
+    text: "Their predictive analysis techniques have provided us with valuable insights, enhancing our strategic planning and operational efficiency.",
+  },
+  {
+    name: "Nadia Abou",
+    role: "Director, ImpactAfrica",
+    text: "TRANEX's engaging narratives have revolutionized how we communicate complex data, enabling us to connect with our audience on a deeper level.",
+  },
+];
+
+const faqs = [
+  { q: "What exactly does TRANEX do?", a: "TRANEX provides strategic Courier and logistics services including express delivery, haulage, freight, warehousing, and cold chain solutions." },
+  { q: "Does Tranex offer international shipping services?", a: "Yes. Tranex can deliver to any destination across the globe, covering over 200 countries." },
+  { q: "What is the difference between Tranex and others?", a: "With over 40 years in existence, Tranex brings more experience than the rest. We are one of only two indigenous logistics companies quoted on the Nigerian Stock Exchange." },
+  { q: "How long does it take to deliver shipments?", a: "Delivery timelines depend strictly on your location. Let us know your location and we'll give you specifics. We offer same-day and next-day options." },
+  { q: "What industries do you support?", a: "We work across Agriculture, FMCG & Retail, Technology & Digital Products, Energy, Oil & Gas, Health, Education, Real Estate, and Logistics & Distribution." },
+  { q: "Can TRANEX support diaspora investors?", a: "Yes. Many of our clients operate from abroad. We provide the ground-level intelligence and support needed." },
+  { q: "How do I get started?", a: "You can begin by visiting our office, sending an email to tranex@tranex-ng.com, or booking a strategy call." },
 ];
 
 const fadeUp = {
@@ -50,10 +99,10 @@ const Index = () => {
             className="max-w-2xl"
           >
             <span className="inline-block bg-secondary/20 text-secondary px-4 py-1.5 rounded-full text-sm font-medium mb-6 border border-secondary/30">
-              Nigeria's Premier Logistics Partner
+              Empowering African Businesses
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-tight mb-6">
-              Safe & Reliable <br />
+              We offer Premium <br />
               <span className="text-secondary">Logistics Solutions</span>
             </h1>
             <p className="text-primary-foreground/80 text-lg mb-8 max-w-lg">
@@ -69,10 +118,10 @@ const Index = () => {
                 Track Shipment
               </a>
               <Link
-                to="/services"
+                to="/about"
                 className="border border-primary-foreground/30 text-primary-foreground px-8 py-3.5 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors"
               >
-                Our Services
+                About Tranex
               </Link>
             </div>
           </motion.div>
@@ -118,7 +167,7 @@ const Index = () => {
               >
                 <Link
                   to="/services"
-                  className="group block bg-card rounded-xl p-6 border border-border hover:border-secondary/50 hover:shadow-lg transition-all duration-300"
+                  className="group block bg-card rounded-xl p-6 border border-border hover:border-secondary/50 hover:shadow-lg transition-all duration-300 h-full"
                 >
                   <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
                     <service.icon className="w-6 h-6 text-secondary" />
@@ -143,13 +192,13 @@ const Index = () => {
           >
             <span className="text-secondary text-sm font-semibold uppercase tracking-wider">About Tranex</span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mt-2 mb-6">
-              Nigeria's Widest Logistics Coverage
+              Trans-Nationwide Express PLC
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Trans-Nationwide Express Plc (TRANEX) is a leading logistics company engaged in domestic and international express delivery, haulage, freight and other ancillary transportation and storage services since 1984.
+              Tranex is a wholly owned Nigerian company, established in 1984. Listed on the Nigeria Stock Exchange (1st tier) in 1993 with a share capital of N250,000,000 and over 3,600 shareholders. We are one of the only two indigenous Logistics Companies quoted on the Nigerian Stock Exchange.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Listed on the Nigerian Stock Exchange, we operate from offices in all state capitals and major cities, supported by real-time tracking and a fleet of motorcycles, vans, buses, and trucks.
+              At TRANEX, we see your business as our business. This ownership mindset ensures we serve you passionately with domestic and international express delivery, haulage, freight and other ancillary transportation and storage services.
             </p>
             <div className="flex flex-wrap gap-6 mb-8">
               {[
@@ -187,6 +236,161 @@ const Index = () => {
               <div className="text-sm opacity-90">Years of Excellence</div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Vision & Mission */}
+      <section className="section-padding bg-background">
+        <div className="container grid md:grid-cols-2 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-card rounded-xl p-8 border border-border"
+          >
+            <h3 className="text-2xl font-heading font-bold text-foreground mb-3">Our Vision</h3>
+            <p className="text-muted-foreground leading-relaxed">To be the preferred logistics company in Africa.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-card rounded-xl p-8 border border-border"
+          >
+            <h3 className="text-2xl font-heading font-bold text-foreground mb-3">Our Mission</h3>
+            <p className="text-muted-foreground leading-relaxed">To exceed stakeholders' expectations by leveraging technology & our people to deliver the best-in-class logistics solutions.</p>
+          </motion.div>
+        </div>
+        <div className="container mt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-card rounded-xl p-8 border border-border"
+          >
+            <h3 className="text-2xl font-heading font-bold text-foreground mb-4">Our Values</h3>
+            <div className="flex flex-wrap gap-4">
+              {["Integrity", "Teamwork", "Innovation", "Excellence"].map((val) => (
+                <span key={val} className="bg-secondary/10 text-secondary px-5 py-2.5 rounded-full font-semibold text-sm border border-secondary/20">
+                  {val}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Counter Stats */}
+      <section className="bg-navy-gradient section-padding">
+        <div className="container grid grid-cols-2 md:grid-cols-4 gap-8">
+          {counterStats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-center"
+            >
+              <div className="w-14 h-14 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-3">
+                <stat.icon className="w-7 h-7 text-secondary" />
+              </div>
+              <div className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground">{stat.value}</div>
+              <div className="text-primary-foreground/60 text-sm mt-1">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Client Logos */}
+      <section className="section-padding bg-muted">
+        <div className="container">
+          <div className="text-center mb-10">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-wider">Trusted By</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mt-2">Companies We Work With</h2>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {clients.map((logo, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+              >
+                <img
+                  src={logo}
+                  alt={`Client ${i + 1}`}
+                  className="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section-padding bg-background">
+        <div className="container">
+          <div className="text-center mb-14">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-wider">Feedback</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mt-2">What People Say About Us</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={t.name}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="bg-card rounded-xl p-8 border border-border relative"
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-4 h-4 fill-secondary text-secondary" />
+                  ))}
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-6 italic">"{t.text}"</p>
+                <div>
+                  <div className="font-heading font-semibold text-foreground">{t.name}</div>
+                  <div className="text-muted-foreground text-sm">{t.role}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="section-padding bg-muted">
+        <div className="container max-w-3xl">
+          <div className="text-center mb-14">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-wider">F.A.Q</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mt-2">Frequently Asked Questions</h2>
+          </div>
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="bg-card rounded-xl border border-border px-6 data-[state=open]:border-secondary/40"
+              >
+                <AccordionTrigger className="text-foreground font-heading font-semibold text-left hover:no-underline">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
