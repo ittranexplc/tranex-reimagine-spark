@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/tranex-logo.png";
 
 const Footer = () => {
   return (
@@ -8,7 +9,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-heading font-bold mb-4">TRANEX</h3>
+            <div className="bg-white inline-block p-3 rounded-lg mb-4">
+              <img src={logo} alt="Tranex Logo" className="h-8 w-auto object-contain" />
+            </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Trans-Nationwide Express Plc — Nigeria's leading logistics company since 1984. Listed on the Nigerian Stock Exchange.
             </p>
