@@ -12,11 +12,62 @@ const highlights = [
   { icon: Users, label: "Shareholders", value: "3,600+" },
 ];
 
-const reports = [
-  { year: "2023", title: "Annual Report & Financial Statements", status: "Coming Soon" },
-  { year: "2022", title: "Annual Report & Financial Statements", status: "Coming Soon" },
-  { year: "2021", title: "Annual Report & Financial Statements", status: "Coming Soon" },
-  { year: "2020", title: "Annual Report & Financial Statements", status: "Coming Soon" },
+type Doc = { title: string; href: string; tag?: string };
+
+const documentGroups: { category: string; description: string; docs: Doc[] }[] = [
+  {
+    category: "Financial Reports",
+    description: "Quarterly and annual unaudited / audited financial statements.",
+    docs: [
+      {
+        title: "Q1 2023 Unaudited Report & Accounts",
+        href: "https://www.tranex-ng.com/docs/QUARTER%201%202023%20UNAUDITED%20REPORTS.pdf",
+        tag: "Q1 2023",
+      },
+      {
+        title: "Inability to Meet the Deadline for Filing of Q2 2025 UFS",
+        href: "https://www.tranex-ng.com/docs/INABILITY%20TO%20MEET%20THE%20DEADLINE%20FOR%20FILING%20OF%20Q2%202025%20UFS-signed.pdf",
+        tag: "Notice",
+      },
+    ],
+  },
+  {
+    category: "Shareholder Information",
+    description: "Information for current and prospective shareholders of Tranex Plc.",
+    docs: [
+      {
+        title: "Tranex Unclaimed Dividend 2024",
+        href: "https://www.tranex-ng.com/docs/TRANEX%20Unclaimed%20Dividend%202024.pdf",
+        tag: "Dividend",
+      },
+    ],
+  },
+  {
+    category: "Corporate Governance & Policies",
+    description: "Policies and reports underpinning our governance framework.",
+    docs: [
+      {
+        title: "Corporate Governance — SEC Public Companies Return",
+        href: "https://www.tranex-ng.com/docs/SECPublic-Companies-Return-on-Corporate-Governance.pdf",
+        tag: "SEC",
+      },
+      {
+        title: "NCCG 2020 Reporting Template — Tranex Plc",
+        href: "https://www.tranex-ng.com/docs/NCCG%202020%20REPORTING%20TEMPLATE-TRANEX%20%20%20PLC.pdf",
+        tag: "NCCG",
+      },
+      {
+        title: "Complaint Management Policy",
+        href: "https://www.tranex-ng.com/docs/COMPLAINT%20MANAGEMENT%20POLICY.pdf",
+        tag: "Policy",
+      },
+      {
+        title: "Securities Trading Policy",
+        href: "https://www.tranex-ng.com/docs/SECURITY%20TRADING%20POLICY.pdf",
+        tag: "Policy",
+      },
+    ],
+  },
 ];
 
 const InvestorRelations = () => {
