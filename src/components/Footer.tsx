@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Twitter, Facebook } from "lucide-react";
 import logo from "@/assets/tranex-logo.png";
+
+const socials = [
+  { icon: Instagram, href: "https://www.instagram.com/tranexplc/", label: "Instagram" },
+  { icon: Twitter, href: "https://x.com/tranexplc", label: "Twitter / X" },
+  { icon: Facebook, href: "https://web.facebook.com/tranexcourierservices/?_rdc=1&_rdr", label: "Facebook" },
+];
 
 const Footer = () => {
   return (
@@ -25,6 +31,7 @@ const Footer = () => {
                 { label: "Home", to: "/" },
                 { label: "About Us", to: "/about" },
                 { label: "Our Services", to: "/services" },
+                { label: "Investor Relations", to: "/investor-relations" },
                 { label: "Contact", to: "/contact" },
               ].map((link) => (
                 <li key={link.to}>
@@ -70,6 +77,20 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/50">
           <p>© {new Date().getFullYear()} Trans-Nationwide Express Plc. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="w-9 h-9 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/70 hover:text-secondary hover:border-secondary transition-colors"
+              >
+                <s.icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
           <a
             href="https://edge.tranex-ng.com/selfcare/shipmentrackpage.aspx"
             target="_blank"
