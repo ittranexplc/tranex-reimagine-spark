@@ -101,49 +101,68 @@ const InvestorRelations = () => {
         </div>
       </section>
 
-      {/* Annual Financial Statements */}
+      {/* Documents & Filings */}
       <section className="section-padding bg-muted/40">
         <div className="container max-w-5xl">
           <div className="mb-12">
-            <p className="text-secondary font-semibold uppercase tracking-wider text-sm mb-3">Financials</p>
+            <p className="text-secondary font-semibold uppercase tracking-wider text-sm mb-3">Documents & Filings</p>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-              Annual Financial Statements
+              Reports, Policies & Disclosures
             </h2>
             <p className="text-muted-foreground max-w-2xl">
-              Download our audited annual reports and financial statements. New filings are uploaded here as they are released to the Nigerian Stock Exchange.
+              Download our latest financial reports, shareholder notices and corporate governance documents. New filings are added here as they are released.
             </p>
           </div>
 
-          <div className="space-y-4">
-            {reports.map((r, i) => (
-              <motion.div
-                key={r.year}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-              >
-                <Card className="p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-md transition-shadow">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 text-primary rounded-lg p-3">
-                      <FileText className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-wider text-muted-foreground">FY {r.year}</p>
-                      <h3 className="font-heading font-semibold text-foreground">{r.title}</h3>
-                    </div>
-                  </div>
-                  <Button variant="outline" disabled className="md:self-center">
-                    <Download className="w-4 h-4 mr-2" />
-                    {r.status}
-                  </Button>
-                </Card>
-              </motion.div>
+          <div className="space-y-12">
+            {documentGroups.map((group) => (
+              <div key={group.category}>
+                <div className="mb-5">
+                  <h3 className="text-xl font-heading font-bold text-foreground">{group.category}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{group.description}</p>
+                </div>
+
+                <div className="space-y-3">
+                  {group.docs.map((doc, i) => (
+                    <motion.div
+                      key={doc.href}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      <Card className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-md hover:border-secondary/40 transition-all">
+                        <div className="flex items-start gap-4">
+                          <div className="bg-primary/10 text-primary rounded-lg p-3 shrink-0">
+                            <FileText className="w-5 h-5" />
+                          </div>
+                          <div>
+                            {doc.tag && (
+                              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                                {doc.tag} · PDF
+                              </p>
+                            )}
+                            <h4 className="font-heading font-semibold text-foreground leading-snug">
+                              {doc.title}
+                            </h4>
+                          </div>
+                        </div>
+                        <Button asChild variant="outline" className="md:self-center shrink-0">
+                          <a href={doc.href} target="_blank" rel="noopener noreferrer">
+                            <Download className="w-4 h-4 mr-2" />
+                            Download
+                          </a>
+                        </Button>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 
-          <p className="text-xs text-muted-foreground mt-6">
-            Documents will be made available for download as PDFs. To request a specific historical report, please contact Investor Relations below.
+          <p className="text-xs text-muted-foreground mt-8">
+            To request a specific historical report or further information, please contact Investor Relations below.
           </p>
         </div>
       </section>
