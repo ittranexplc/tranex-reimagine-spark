@@ -2,13 +2,12 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/tranex-logo.png";
+import logo from "@/assets/tranex-logo.jpg";
 
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Investors", to: "/investor-relations" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -38,8 +37,11 @@ const Navbar = () => {
       <nav className="bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
         <div className="container flex items-center justify-between py-3">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Tranex Logo" className="h-10 w-auto object-contain" />
-            <span className="hidden sm:block text-[10px] text-muted-foreground leading-tight">Trans-Nationwide<br/>Express Plc</span>
+            <img src={logo} alt="Tranex Logo" className="h-10 w-10 rounded-md object-contain" />
+            <div>
+              <span className="text-xl font-heading font-bold text-primary tracking-tight">TRANEX</span>
+              <span className="block text-[10px] text-muted-foreground leading-none -mt-0.5">Trans-Nationwide Express</span>
+            </div>
           </Link>
 
           {/* Desktop links */}
