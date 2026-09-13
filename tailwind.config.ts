@@ -61,10 +61,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        navy: {
-          DEFAULT: "hsl(var(--navy))",
-          deep: "hsl(var(--navy-deep))",
-          light: "hsl(var(--navy-light))",
+        green: {
+          DEFAULT: "hsl(var(--green))",
+          deep: "hsl(var(--green-deep))",
+          light: "hsl(var(--green-light))",
         },
         orange: {
           DEFAULT: "hsl(var(--orange))",

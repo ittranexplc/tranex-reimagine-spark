@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 220 40% 13%;
+    --background: 145 20% 97%;
+    --foreground: 145 40% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 40% 13%;
+    --card-foreground: 145 40% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 40% 13%;
+    --popover-foreground: 145 40% 13%;
 
-    --primary: 220 60% 18%;
+    --primary: 145 70% 28%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 24 95% 53%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 145 15% 92%;
+    --muted-foreground: 145 10% 46%;
 
     --accent: 24 95% 53%;
     --accent-foreground: 0 0% 100%;
@@ -30,50 +30,50 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
+    --border: 145 15% 88%;
+    --input: 145 15% 88%;
     --ring: 24 95% 53%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 60% 12%;
-    --sidebar-foreground: 220 10% 90%;
+    --sidebar-background: 145 60% 12%;
+    --sidebar-foreground: 145 10% 90%;
     --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 40% 20%;
-    --sidebar-accent-foreground: 220 10% 90%;
-    --sidebar-border: 220 30% 25%;
+    --sidebar-accent: 145 40% 20%;
+    --sidebar-accent-foreground: 145 10% 90%;
+    --sidebar-border: 145 30% 25%;
     --sidebar-ring: 24 95% 53%;
 
     /* Custom tokens */
-    --navy: 220 60% 18%;
-    --navy-deep: 220 65% 10%;
-    --navy-light: 220 40% 30%;
+    --green: 145 70% 28%;
+    --green-deep: 145 75% 14%;
+    --green-light: 145 50% 40%;
     --orange: 24 95% 53%;
     --orange-light: 24 90% 65%;
     --orange-dark: 24 95% 42%;
-    --surface: 220 20% 97%;
+    --surface: 145 20% 97%;
     --surface-elevated: 0 0% 100%;
   }
 
   .dark {
-    --background: 220 65% 8%;
-    --foreground: 220 10% 95%;
+    --background: 145 65% 8%;
+    --foreground: 145 10% 95%;
 
-    --card: 220 55% 12%;
-    --card-foreground: 220 10% 95%;
+    --card: 145 55% 12%;
+    --card-foreground: 145 10% 95%;
 
-    --popover: 220 55% 12%;
-    --popover-foreground: 220 10% 95%;
+    --popover: 145 55% 12%;
+    --popover-foreground: 145 10% 95%;
 
-    --primary: 24 95% 53%;
+    --primary: 145 60% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 40% 20%;
-    --secondary-foreground: 220 10% 95%;
+    --secondary: 24 95% 53%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 40% 16%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 145 40% 16%;
+    --muted-foreground: 145 10% 60%;
 
     --accent: 24 95% 53%;
     --accent-foreground: 0 0% 100%;
@@ -81,16 +81,16 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 30% 20%;
-    --input: 220 30% 20%;
+    --border: 145 30% 20%;
+    --input: 145 30% 20%;
     --ring: 24 95% 53%;
-    --sidebar-background: 220 65% 6%;
-    --sidebar-foreground: 220 10% 90%;
+    --sidebar-background: 145 65% 6%;
+    --sidebar-foreground: 145 10% 90%;
     --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 40% 14%;
-    --sidebar-accent-foreground: 220 10% 90%;
-    --sidebar-border: 220 30% 15%;
+    --sidebar-accent: 145 40% 14%;
+    --sidebar-accent-foreground: 145 10% 90%;
+    --sidebar-border: 145 30% 15%;
     --sidebar-ring: 24 95% 53%;
   }
 }
@@ -115,14 +115,14 @@
   }
 
   .bg-navy-gradient {
-    @apply bg-gradient-to-br from-navy-deep via-primary to-navy-light;
+    @apply bg-gradient-to-br from-green-deep via-primary to-green-light;
   }
 
   .bg-hero-overlay {
     background: linear-gradient(
       135deg,
-      hsl(220 65% 10% / 0.92) 0%,
-      hsl(220 60% 18% / 0.75) 50%,
+      hsl(145 75% 14% / 0.92) 0%,
+      hsl(145 70% 28% / 0.75) 50%,
       hsl(24 95% 53% / 0.15) 100%
     );
   }
