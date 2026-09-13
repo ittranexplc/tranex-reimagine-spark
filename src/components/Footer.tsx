@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Twitter, Facebook } from "lucide-react";
 
 const Footer = () => {
+  const socialLinks = [
+    { icon: Instagram, href: "https://www.instagram.com/tranexplc/", label: "Instagram" },
+    { icon: Twitter, href: "https://x.com/tranexplc", label: "Twitter / X" },
+    { icon: Facebook, href: "https://web.facebook.com/tranexcourierservices/?_rdc=1&_rdr", label: "Facebook" },
+  ];
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container section-padding">
@@ -12,6 +18,20 @@ const Footer = () => {
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Trans-Nationwide Express Plc — Nigeria's leading logistics company since 1984. Listed on the Nigerian Stock Exchange.
             </p>
+            <div className="flex items-center gap-3 mt-5">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors"
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -22,6 +42,7 @@ const Footer = () => {
                 { label: "Home", to: "/" },
                 { label: "About Us", to: "/about" },
                 { label: "Our Services", to: "/services" },
+                { label: "Investor Relations", to: "/investor-relations" },
                 { label: "Contact", to: "/contact" },
               ].map((link) => (
                 <li key={link.to}>

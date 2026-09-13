@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/tranex-logo.jpg";
+import logo from "@/assets/tranex-logo.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
+  { label: "Investor Relations", to: "/investor-relations" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -37,15 +38,14 @@ const Navbar = () => {
       <nav className="bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
         <div className="container flex items-center justify-between py-3">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Tranex Logo" className="h-10 w-10 rounded-md object-contain" />
-            <div>
-              <span className="text-xl font-heading font-bold text-primary tracking-tight">TRANEX</span>
-              <span className="block text-[10px] text-muted-foreground leading-none -mt-0.5">Trans-Nationwide Express</span>
+            <img src={logo} alt="Tranex Logo" className="h-10 w-auto object-contain" />
+            <div className="hidden sm:block">
+              <span className="block text-[10px] text-muted-foreground leading-none">Trans-Nationwide Express Plc</span>
             </div>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
@@ -68,7 +68,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile toggle */}
-          <button onClick={() => setOpen(!open)} className="md:hidden p-2 text-foreground">
+          <button onClick={() => setOpen(!open)} className="lg:hidden p-2 text-foreground">
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -80,7 +80,7 @@ const Navbar = () => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden overflow-hidden bg-card border-t border-border"
+              className="lg:hidden overflow-hidden bg-card border-t border-border"
             >
               <div className="container py-4 flex flex-col gap-3">
                 {navLinks.map((link) => (
