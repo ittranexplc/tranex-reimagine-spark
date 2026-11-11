@@ -1,17 +1,29 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Truck, Plane, Ship, Warehouse, ShoppingCart, Thermometer, Package, Zap, ArrowRight, MapPin, Phone, Clock, Shield, Globe, Users, Star, SmilePlus, Briefcase, HeartHandshake, HardHat,
 } from "lucide-react";
 import Layout from "@/components/Layout";
+import CompanyValues from "@/components/CompanyValues";
+import accessBankLogo from "@/assets/logos/access-bank.png";
 import heroImage from "@/assets/hero-logistics.jpg";
 import warehouseImage from "@/assets/about-warehouse.jpg";
-import client1 from "@/assets/clients/client-1.avif";
-import client2 from "@/assets/clients/client-2.avif";
-import client3 from "@/assets/clients/client-3.avif";
-import client4 from "@/assets/clients/client-4.avif";
-import client5 from "@/assets/clients/client-5.avif";
-import client6 from "@/assets/clients/client-6.avif";
+import oriflameLogo from "@/assets/logos/oriflame.svg";
+import afrioneLogo from "@/assets/logos/afrione.png";
+import airtelLogo from "@/assets/logos/airtel.png";
+import ncdmbLogo from "@/assets/logos/ncdmb.png";
+import bripanLogo from "@/assets/logos/bripan.jpg";
+import phillipsHmoLogo from "@/assets/logos/phillips-hmo.png";
+import ipnxLogo from "@/assets/logos/ipnx.png";
+import pricewiseLogo from "@/assets/logos/pricewise.png";
+import smartwaresLogo from "@/assets/logos/smartwares-n-products.png";
+import npaLogo from "@/assets/logos/nigerian-ports-authority.jpg";
+import kennediaLogo from "@/assets/logos/kennedia-consulting.png";
+import aquilaLogo from "@/assets/logos/aquila-capital.png";
+import swwipeLogo from "@/assets/logos/swwipe.png";
+import dizengoffLogo from "@/assets/logos/dizengoff-nigeria.svg";
+import perfettiLogo from "@/assets/logos/perfetti-van-melle.svg";
+import chipharmaLogo from "@/assets/logos/chipharma.png";
 import {
   Accordion,
   AccordionContent,
@@ -44,7 +56,26 @@ const counterStats = [
   { icon: HardHat, value: "150+", label: "Hard Workers" },
 ];
 
-const clients = [client1, client2, client3, client4, client5, client6];
+const defaultLogoSize = "max-h-10 md:max-h-12 max-w-[85%]";
+const clients: { name: string; logo?: string; size?: string }[] = [
+  { name: "Oriflame", logo: oriflameLogo },
+  { name: "Chipharma", logo: chipharmaLogo, size: "max-h-14 md:max-h-[4.5rem] max-w-[min(85%,174px)]" },
+  { name: "Pricewise", logo: pricewiseLogo },
+  { name: "Afrione", logo: afrioneLogo },
+  { name: "Access Bank", logo: accessBankLogo, size: "max-h-10 md:max-h-12 max-w-[min(85%,124px)]" },
+  { name: "Airtel", logo: airtelLogo, size: "max-h-8 md:max-h-9 max-w-[75%]" },
+  { name: "Nigerian Content Development Board", logo: ncdmbLogo, size: "max-h-12 md:max-h-14 max-w-full" },
+  { name: "Smartwares 'N' Products", logo: smartwaresLogo, size: "max-h-14 md:max-h-[4.5rem] max-w-[85%]" },
+  { name: "Perfetti Van Melle", logo: perfettiLogo, size: "max-h-12 md:max-h-14 max-w-[85%]" },
+  { name: "Nigerian Ports Authority", logo: npaLogo, size: "max-h-14 md:max-h-[4.5rem] max-w-[85%]" },
+  { name: "Kennedia Consulting", logo: kennediaLogo, size: "max-h-12 md:max-h-14 max-w-full" },
+  { name: "Bripan", logo: bripanLogo, size: "max-h-14 md:max-h-[4.5rem] max-w-[85%]" },
+  { name: "Aquila Capital Limited", logo: aquilaLogo, size: "max-h-12 md:max-h-14 max-w-[85%]" },
+  { name: "Philip Health Management Services Limited", logo: phillipsHmoLogo },
+  { name: "Swwipe Financial Services Limited", logo: swwipeLogo },
+  { name: "ipNX Nigeria Limited", logo: ipnxLogo },
+  { name: "Dizengoff Nigeria", logo: dizengoffLogo, size: "max-h-12 md:max-h-14 max-w-[85%]" },
+];
 
 const testimonials = [
   {
@@ -83,6 +114,8 @@ const fadeUp = {
 };
 
 const Index = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Layout>
       {/* Hero */}
@@ -265,20 +298,14 @@ const Index = () => {
         </div>
         <div className="container mt-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-card rounded-xl p-8 border border-border"
+            className="bg-card rounded-xl px-3 py-5 sm:p-8 border border-border"
           >
-            <h3 className="text-2xl font-heading font-bold text-foreground mb-4">Our Values</h3>
-            <div className="flex flex-wrap gap-4">
-              {["Integrity", "Teamwork", "Innovation", "Excellence"].map((val) => (
-                <span key={val} className="bg-secondary/10 text-secondary px-5 py-2.5 rounded-full font-semibold text-sm border border-secondary/20">
-                  {val}
-                </span>
-              ))}
-            </div>
+            <h3 className="text-2xl font-heading font-bold text-foreground mb-6 px-2 sm:px-0">Our Values</h3>
+            <CompanyValues />
           </motion.div>
         </div>
       </section>
@@ -313,24 +340,34 @@ const Index = () => {
             <span className="text-secondary text-sm font-semibold uppercase tracking-wider">Trusted By</span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mt-2">Companies We Work With</h2>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {clients.map((logo, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                initial="hidden"
+          <ul className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {clients.map((client, i) => (
+              <motion.li
+                key={client.name}
+                custom={i % 5}
+                initial={reduceMotion ? false : "hidden"}
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
+                className="group grow-0 shrink-0 min-w-0 basis-[calc(50%-0.375rem)] sm:basis-[calc(33.333%-0.667rem)] md:basis-[calc(25%-0.75rem)] lg:basis-[calc(20%-0.8rem)] h-24 md:h-28 flex items-center justify-center bg-card rounded-xl border border-border p-2 sm:p-3 lg:p-4 hover:shadow-md hover:border-secondary/40 transition-[box-shadow,border-color] duration-300 motion-reduce:transition-none"
               >
-                <img
-                  src={logo}
-                  alt={`Client ${i + 1}`}
-                  className="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                />
-              </motion.div>
+                {client.logo ? (
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    title={client.name}
+                    loading="lazy"
+                    decoding="async"
+                    className={`${client.size ?? defaultLogoSize} w-auto h-auto object-contain [@media(hover:hover)]:grayscale group-hover:grayscale-0 transition-[filter] duration-300 motion-reduce:transition-none`}
+                  />
+                ) : (
+                  <span className="min-w-0 text-center font-heading font-semibold text-xs sm:text-[0.8125rem] xl:text-base leading-snug [overflow-wrap:anywhere] text-muted-foreground group-hover:text-primary transition-colors duration-300 motion-reduce:transition-none">
+                    {client.name}
+                  </span>
+                )}
+              </motion.li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -414,7 +451,7 @@ const Index = () => {
               Contact Us
             </Link>
             <a
-              href="tel:+2348123682573"
+              href="tel:+2349058413864"
               className="flex items-center gap-2 border border-primary-foreground/30 text-primary-foreground px-8 py-3.5 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors"
             >
               <Phone className="w-4 h-4" /> Call Now
@@ -425,11 +462,11 @@ const Index = () => {
 
       {/* Quick Info */}
       <section className="section-padding bg-background">
-        <div className="container grid md:grid-cols-3 gap-8">
+        <div className="container grid gap-6 max-w-xl lg:max-w-none lg:grid-cols-3">
           {[
             { icon: MapPin, title: "Head Office", desc: "28, Oshodi Apapa Expressway, Oshodi Lagos" },
             { icon: Clock, title: "Working Hours", desc: "Monday – Friday: 8:00 AM – 5:00 PM" },
-            { icon: Phone, title: "Customer Care", desc: "(234) 812-368-2573 | (234) 905-841-3864" },
+            { icon: Phone, title: "Customer Care", desc: "(234) 905-841-3864", href: "tel:+2349058413864" },
           ].map((item, i) => (
             <motion.div
               key={item.title}
@@ -438,14 +475,20 @@ const Index = () => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="flex items-start gap-4 bg-card rounded-xl p-6 border border-border"
+              className="flex items-start gap-3 bg-card rounded-xl p-5 border border-border"
             >
-              <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
-                <item.icon className="w-6 h-6 text-secondary" />
+              <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
+                <item.icon className="w-5 h-5 text-secondary" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="font-heading font-semibold text-foreground mb-1">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                {item.href ? (
+                  <a href={item.href} className="text-muted-foreground text-sm whitespace-nowrap hover:text-secondary transition-colors">
+                    {item.desc}
+                  </a>
+                ) : (
+                  <p className="text-muted-foreground text-sm">{item.desc}</p>
+                )}
               </div>
             </motion.div>
           ))}
