@@ -1,15 +1,9 @@
 import { motion } from "framer-motion";
-import { Shield, Globe, Users, Eye, Target, Heart, Lightbulb, Star } from "lucide-react";
+import { Shield, Globe, Users, Eye, Target } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import warehouseImage from "@/assets/about-warehouse.jpg";
-
-const values = [
-  { icon: Heart, title: "Integrity", desc: "We uphold the highest standards of honesty and transparency." },
-  { icon: Users, title: "Team Work", desc: "Collaboration drives our success and innovation." },
-  { icon: Lightbulb, title: "Innovation", desc: "We embrace technology to deliver cutting-edge solutions." },
-  { icon: Star, title: "Excellence", desc: "We strive for the best in everything we do." },
-];
+import { companyValues as values } from "@/data/companyValues";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -109,7 +103,7 @@ const About = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-heading font-bold text-primary-foreground">Our Core Values</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {values.map((value, i) => (
               <motion.div
                 key={value.title}
@@ -118,11 +112,11 @@ const About = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="bg-primary-foreground/5 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/10 text-center"
+                className="grow-0 shrink-0 min-w-0 basis-full sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)] bg-primary-foreground/5 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/10 text-center"
               >
                 <value.icon className="w-8 h-8 text-secondary mx-auto mb-4" />
                 <h3 className="font-heading font-semibold text-primary-foreground mb-2">{value.title}</h3>
-                <p className="text-primary-foreground/60 text-sm">{value.desc}</p>
+                <p className="text-primary-foreground/60 text-sm leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
           </div>

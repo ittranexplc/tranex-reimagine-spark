@@ -22,15 +22,19 @@ const Navbar = () => {
       <div className="bg-primary text-primary-foreground">
         <div className="container flex items-center justify-between py-2 text-sm">
           <div className="flex items-center gap-4">
-            <a href="tel:+2348123682573" className="flex items-center gap-1 hover:text-secondary transition-colors">
-              <Phone className="w-3 h-3" />
-              <span className="hidden sm:inline">(234) 812-368-2573</span>
+            <a
+              href="tel:+2349058413864"
+              aria-label="Call Customer Care: (234) 905-841-3864"
+              className="flex items-center gap-1 hover:text-secondary transition-colors whitespace-nowrap"
+            >
+              <Phone className="w-3 h-3" aria-hidden="true" />
+              <span>(234) 905-841-3864</span>
             </a>
             <a href="mailto:info@tranex-ng.com" className="hidden md:inline hover:text-secondary transition-colors">
               info@tranex-ng.com
             </a>
           </div>
-          <span className="text-primary-foreground/70 text-xs">Mon - Fri: 8:00 AM - 5:00 PM</span>
+          <span className="hidden sm:inline text-primary-foreground/70 text-xs">Mon - Fri: 8:00 AM - 5:00 PM</span>
         </div>
       </div>
 
@@ -68,8 +72,15 @@ const Navbar = () => {
           </div>
 
           {/* Mobile toggle */}
-          <button onClick={() => setOpen(!open)} className="lg:hidden p-2 text-foreground">
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button
+            type="button"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            className="lg:hidden p-2 text-foreground"
+          >
+            {open ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
           </button>
         </div>
 
@@ -77,6 +88,7 @@ const Navbar = () => {
         <AnimatePresence>
           {open && (
             <motion.div
+              id="mobile-menu"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

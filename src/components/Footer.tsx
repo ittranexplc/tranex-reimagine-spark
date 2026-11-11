@@ -57,12 +57,14 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h4 className="font-heading font-semibold mb-4 text-secondary">Services</h4>
-            <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li>Local Logistics</li>
-              <li>Air & Sea Freight</li>
-              <li>Express Delivery</li>
-              <li>Warehousing</li>
-              <li>E-Commerce Fulfillment</li>
+            <ul className="space-y-2 text-sm">
+              {["Local Logistics", "Air & Sea Freight", "Express Delivery", "Warehousing", "E-Commerce Fulfillment"].map((service) => (
+                <li key={service}>
+                  <Link to="/services" className="text-primary-foreground/70 hover:text-secondary transition-colors">
+                    {service}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -76,7 +78,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 shrink-0 text-secondary" />
-                <a href="tel:+2348123682573" className="hover:text-secondary transition-colors">(234) 812-368-2573</a>
+                <a href="tel:+2349058413864" className="hover:text-secondary transition-colors">(234) 905-841-3864</a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0 text-secondary" />

@@ -42,10 +42,9 @@ const Contact = () => {
       {/* Contact Info */}
       <section className="section-padding bg-background">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid lg:grid-cols-3 gap-6 mb-16 max-w-md lg:max-w-5xl mx-auto">
             {[
-              { icon: Phone, title: "Customer Care", info: "(234) 812-368-2573", link: "tel:+2348123682573" },
-              { icon: Phone, title: "Business Line", info: "(234) 905-841-3864", link: "tel:+2349058413864" },
+              { icon: Phone, title: "Customer Care", info: "(234) 905-841-3864", link: "tel:+2349058413864" },
               { icon: Mail, title: "Email", info: "info@tranex-ng.com", link: "mailto:info@tranex-ng.com" },
               { icon: Clock, title: "Working Hours", info: "Mon – Fri: 8AM – 5PM", link: null },
             ].map((item, i) => (
