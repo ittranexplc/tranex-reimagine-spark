@@ -4,26 +4,13 @@ import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 
 const lagosOffices = [
-  { name: "Head Office", address: "28 Oshodi Apapa Expressway, Lagos" },
-  { name: "Victoria Island", address: "Plot 22, Idowu Taylor Street, Victoria Island" },
-  { name: "Computer Village", address: "12, Simbiat Abiola Way, Computer Village, Ikeja" },
-  { name: "Apapa", address: "25, Warehouse Road, Beside Noss Stores, Apapa" },
-  { name: "Ogba", address: "3A, Ijayi Road, Beside Spootom Link Services, Aguda Ogba" },
+  { name: "Head Office", address: "28-30 Oshodi Apapa Expressway, Lagos" },
+  { name: "Computer Village Office", address: "12, Simbiat Abiola Way, Computer Village, Ikeja" },
 ];
 
 const otherLocations = [
-  { state: "Abuja", address: "Suite A35, Melita Plaza, Garki Area II" },
-  { state: "Rivers", address: "50, Mbonu Street, D/Line Port-Harcourt" },
-  { state: "Oyo", address: "75, MKO Abiola Way, Ring Road, Ibadan" },
-  { state: "Abia", address: "13, Factory Road, Opposite Skyebank, Aba" },
-  { state: "Anambra", address: "25, New Market Road, Onitsha" },
-  { state: "Delta", address: "46, Effurun/Sapele Road, Warri" },
-  { state: "Edo", address: "Benin City Office" },
-  { state: "Kaduna", address: "Kaduna State Office" },
-  { state: "Kano", address: "Kano State Office" },
-  { state: "Cross Rivers", address: "30/32, Ndidem Usang Road, Calabar" },
-  { state: "Bayelsa", address: "154, Mbiama-Yenagoa Road, Yenagoa" },
-  { state: "Borno", address: "S27 Ramat Shopping Complex, Maiduguri" },
+  { name: "Abuja Station", address: "Suite B27, Area 11 Shopping Mall, Garki, Abuja" },
+  { name: "Port Harcourt Station", address: "50, Mbomi Street, D-Line, Port Harcourt" },
 ];
 
 const fadeUp = {
@@ -46,7 +33,7 @@ const Contact = () => {
             {[
               { icon: Phone, title: "Customer Care", info: "(234) 905-841-3864", link: "tel:+2349058413864" },
               { icon: Mail, title: "Email", info: "info@tranex-ng.com", link: "mailto:info@tranex-ng.com" },
-              { icon: Clock, title: "Working Hours", info: "Mon – Fri: 8AM – 5PM", link: null },
+              { icon: Clock, title: "Working Hours", info: "24/7", link: null },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
@@ -73,11 +60,11 @@ const Contact = () => {
           </div>
 
           {/* Lagos Offices */}
-          <div className="mb-16">
+          <div className="mb-16 max-w-3xl mx-auto">
             <h2 className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-2">
               <MapPin className="w-6 h-6 text-secondary" /> Lagos Offices
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               {lagosOffices.map((office, i) => (
                 <motion.div
                   key={office.name}
@@ -96,14 +83,14 @@ const Contact = () => {
           </div>
 
           {/* Other Locations */}
-          <div>
+          <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-heading font-bold text-foreground mb-8 flex items-center gap-2">
               <MapPin className="w-6 h-6 text-secondary" /> Nationwide Locations
             </h2>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               {otherLocations.map((loc, i) => (
                 <motion.div
-                  key={loc.state}
+                  key={loc.name}
                   custom={i}
                   initial="hidden"
                   whileInView="visible"
@@ -111,7 +98,7 @@ const Contact = () => {
                   variants={fadeUp}
                   className="bg-card rounded-lg p-4 border border-border"
                 >
-                  <h4 className="font-heading font-semibold text-secondary text-sm mb-1">{loc.state}</h4>
+                  <h4 className="font-heading font-semibold text-secondary text-sm mb-1">{loc.name}</h4>
                   <p className="text-muted-foreground text-xs">{loc.address}</p>
                 </motion.div>
               ))}

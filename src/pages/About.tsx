@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Shield, Globe, Users, Eye, Target } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import CompanyValues from "@/components/CompanyValues";
 import warehouseImage from "@/assets/about-warehouse.jpg";
-import { companyValues as values } from "@/data/companyValues";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,6 +14,8 @@ const fadeUp = {
 };
 
 const About = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Layout>
       <PageHeader title="About Tranex" subtitle="Nigeria's leading logistics company since 1984" />
@@ -98,28 +100,20 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="section-padding bg-navy-gradient">
+      <section className="section-padding bg-muted">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-heading font-bold text-primary-foreground">Our Core Values</h2>
+            <h2 className="text-3xl font-heading font-bold text-foreground">Our Core Values</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {values.map((value, i) => (
-              <motion.div
-                key={value.title}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="grow-0 shrink-0 min-w-0 basis-full sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)] bg-primary-foreground/5 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/10 text-center"
-              >
-                <value.icon className="w-8 h-8 text-secondary mx-auto mb-4" />
-                <h3 className="font-heading font-semibold text-primary-foreground mb-2">{value.title}</h3>
-                <p className="text-primary-foreground/60 text-sm leading-relaxed">{value.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-card rounded-xl px-3 py-5 sm:p-8 border border-border"
+          >
+            <CompanyValues headingAs="h3" />
+          </motion.div>
         </div>
       </section>
     </Layout>

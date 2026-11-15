@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  Truck, Plane, Ship, Warehouse, ShoppingCart, Thermometer, Package, Zap, ArrowRight, MapPin, Phone, Clock, Shield, Globe, Users, Star, SmilePlus, Briefcase, HeartHandshake, HardHat,
+  Truck, Plane, Ship, Warehouse, ShoppingCart, Thermometer, Package, Zap, ArrowRight, MapPin, Phone, Clock, Shield, Globe, Users, Star, Quote, SmilePlus, Briefcase, HeartHandshake, HardHat,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import CompanyValues from "@/components/CompanyValues";
+import { testimonials } from "@/data/testimonials";
 import accessBankLogo from "@/assets/logos/access-bank.png";
 import heroImage from "@/assets/hero-logistics.jpg";
 import warehouseImage from "@/assets/about-warehouse.jpg";
@@ -45,7 +46,7 @@ const services = [
 const stats = [
   { value: "40+", label: "Years Experience" },
   { value: "200+", label: "Countries Served" },
-  { value: "36+", label: "States Covered" },
+  { value: "4", label: "Office Locations" },
   { value: "3,600+", label: "Shareholders" },
 ];
 
@@ -75,24 +76,6 @@ const clients: { name: string; logo?: string; size?: string }[] = [
   { name: "Swwipe Financial Services Limited", logo: swwipeLogo },
   { name: "ipNX Nigeria Limited", logo: ipnxLogo },
   { name: "Dizengoff Nigeria", logo: dizengoffLogo, size: "max-h-12 md:max-h-14 max-w-[85%]" },
-];
-
-const testimonials = [
-  {
-    name: "Kwame Amoah",
-    role: "CEO, Tech Innovate",
-    text: "TRANEX's human-centered analytics have empowered our decision-making process and led to remarkable outcomes.",
-  },
-  {
-    name: "Amina Soweto",
-    role: "CTO, InnovateX",
-    text: "Their predictive analysis techniques have provided us with valuable insights, enhancing our strategic planning and operational efficiency.",
-  },
-  {
-    name: "Nadia Abou",
-    role: "Director, ImpactAfrica",
-    text: "TRANEX's engaging narratives have revolutionized how we communicate complex data, enabling us to connect with our audience on a deeper level.",
-  },
 ];
 
 const faqs = [
@@ -378,30 +361,46 @@ const Index = () => {
             <span className="text-secondary text-sm font-semibold uppercase tracking-wider">Feedback</span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mt-2">What People Say About Us</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <ul className="grid gap-6 lg:grid-cols-3 lg:gap-8 max-w-xl lg:max-w-none mx-auto">
             {testimonials.map((t, i) => (
-              <motion.div
+              <motion.li
                 key={t.name}
                 custom={i}
-                initial="hidden"
+                initial={reduceMotion ? false : "hidden"}
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="bg-card rounded-xl p-8 border border-border relative"
+                className="flex"
               >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-secondary text-secondary" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground leading-relaxed mb-6 italic">"{t.text}"</p>
-                <div>
-                  <div className="font-heading font-semibold text-foreground">{t.name}</div>
-                  <div className="text-muted-foreground text-sm">{t.role}</div>
-                </div>
-              </motion.div>
+                <figure className="flex w-full flex-col bg-card rounded-xl p-6 sm:p-8 border border-border hover:border-secondary/40 hover:shadow-lg transition-[border-color,box-shadow] duration-300 motion-reduce:transition-none">
+                  <div className="flex items-center justify-between gap-4 mb-5">
+                    <div role="img" aria-label={`Rated ${t.rating} out of 5`} className="flex gap-1">
+                      {Array.from({ length: 5 }, (_, j) => (
+                        <Star
+                          key={j}
+                          aria-hidden="true"
+                          className={j < t.rating ? "w-4 h-4 fill-secondary text-secondary" : "w-4 h-4 text-muted-foreground/40"}
+                        />
+                      ))}
+                    </div>
+                    <Quote aria-hidden="true" className="w-8 h-8 shrink-0 text-secondary/30 fill-secondary/10" />
+                  </div>
+                  <blockquote className="flex-1 mb-6">
+                    <p className="text-muted-foreground leading-relaxed italic">{t.text}</p>
+                  </blockquote>
+                  <figcaption className="flex items-center gap-3 pt-5 border-t border-border">
+                    <span
+                      aria-hidden="true"
+                      className="w-11 h-11 shrink-0 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-heading font-bold text-sm"
+                    >
+                      {t.initials}
+                    </span>
+                    <span className="min-w-0 font-heading font-semibold text-foreground">{t.name}</span>
+                  </figcaption>
+                </figure>
+              </motion.li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -464,8 +463,8 @@ const Index = () => {
       <section className="section-padding bg-background">
         <div className="container grid gap-6 max-w-xl lg:max-w-none lg:grid-cols-3">
           {[
-            { icon: MapPin, title: "Head Office", desc: "28, Oshodi Apapa Expressway, Oshodi Lagos" },
-            { icon: Clock, title: "Working Hours", desc: "Monday – Friday: 8:00 AM – 5:00 PM" },
+            { icon: MapPin, title: "Head Office", desc: "28-30, Oshodi Apapa Expressway, Oshodi Lagos" },
+            { icon: Clock, title: "Working Hours", desc: "24/7" },
             { icon: Phone, title: "Customer Care", desc: "(234) 905-841-3864", href: "tel:+2349058413864" },
           ].map((item, i) => (
             <motion.div

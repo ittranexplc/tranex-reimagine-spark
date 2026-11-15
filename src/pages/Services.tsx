@@ -45,7 +45,7 @@ const services = [
   {
     icon: Zap,
     title: "Express Delivery",
-    desc: "With offices in all State Capitals and major cities, our domestic express delivery includes same day and next day options. International deliveries via major partners in 200+ countries.",
+    desc: "With offices in Lagos, Abuja and Port Harcourt, our domestic express delivery includes same day and next day options. International deliveries via major partners in 200+ countries.",
   },
   {
     icon: BoxIcon,

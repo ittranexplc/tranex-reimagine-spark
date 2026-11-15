@@ -34,7 +34,7 @@ const Navbar = () => {
               info@tranex-ng.com
             </a>
           </div>
-          <span className="hidden sm:inline text-primary-foreground/70 text-xs">Mon - Fri: 8:00 AM - 5:00 PM</span>
+          <span className="text-primary-foreground/70 text-xs whitespace-nowrap">Open 24/7</span>
         </div>
       </div>
 

@@ -74,7 +74,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-primary-foreground/70">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-secondary" />
-                28, Oshodi Apapa Expressway, Oshodi Lagos
+                28-30, Oshodi Apapa Expressway, Oshodi Lagos
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 shrink-0 text-secondary" />

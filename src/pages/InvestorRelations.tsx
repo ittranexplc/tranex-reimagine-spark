@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FileText, Download, TrendingUp, Shield, Users, Mail } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
@@ -7,6 +7,8 @@ type Document = {
   title: string;
   url: string;
   tag: string;
+  pages: number;
+  size: string;
 };
 
 type DocumentGroup = {
@@ -19,14 +21,18 @@ const documentGroups: DocumentGroup[] = [
     title: "Financial Reports",
     docs: [
       {
-        title: "Tranex Q1 2023 Unaudited Annual Report & Accounts",
-        url: "https://www.tranex-ng.com/docs/QUARTER%201%202023%20UNAUDITED%20REPORTS.pdf",
-        tag: "Financial",
+        title: "Notice: Inability to Meet the Deadline for Filing of Q2 2025 Unaudited Financial Statements",
+        url: "/docs/notice-inability-to-file-q2-2025-ufs.pdf",
+        tag: "Notice",
+        pages: 1,
+        size: "249 KB",
       },
       {
-        title: "Inability to Meet the Deadline for Filing of Q2 2025 UFS",
-        url: "https://www.tranex-ng.com/docs/INABILITY%20TO%20MEET%20THE%20DEADLINE%20FOR%20FILING%20OF%20Q2%202025%20UFS-signed.pdf",
-        tag: "Notice",
+        title: "Unaudited Financial Statements: Quarter Ended 31 March 2023 (Q1 2023)",
+        url: "/docs/unaudited-financial-statements-q1-2023.pdf",
+        tag: "Financial",
+        pages: 15,
+        size: "769 KB",
       },
     ],
   },
@@ -34,9 +40,11 @@ const documentGroups: DocumentGroup[] = [
     title: "Shareholder Information",
     docs: [
       {
-        title: "Tranex Unclaimed Dividend 2024",
-        url: "https://www.tranex-ng.com/docs/TRANEX%20Unclaimed%20Dividend%202024.pdf",
+        title: "Unclaimed Dividend List: Year Ended 31 December 2023",
+        url: "/docs/unclaimed-dividend-list-fy2023.pdf",
         tag: "Dividend",
+        pages: 85,
+        size: "1.5 MB",
       },
     ],
   },
@@ -44,24 +52,11 @@ const documentGroups: DocumentGroup[] = [
     title: "Corporate Governance & Policies",
     docs: [
       {
-        title: "Corporate Governance Return (SEC Public Companies)",
-        url: "https://www.tranex-ng.com/docs/SECPublic-Companies-Return-on-Corporate-Governance.pdf",
+        title: "Quarterly Corporate Governance Report: Quarter Ended 30 September 2026",
+        url: "/docs/quarterly-corporate-governance-report-q3-2026.pdf",
         tag: "Governance",
-      },
-      {
-        title: "NCCG 2020 Reporting Template",
-        url: "https://www.tranex-ng.com/docs/NCCG%202020%20REPORTING%20TEMPLATE-TRANEX%20%20%20PLC.pdf",
-        tag: "Compliance",
-      },
-      {
-        title: "Complaint Management Policy",
-        url: "https://www.tranex-ng.com/docs/COMPLAINT%20MANAGEMENT%20POLICY.pdf",
-        tag: "Policy",
-      },
-      {
-        title: "Securities Trading Policy",
-        url: "https://www.tranex-ng.com/docs/SECURITY%20TRADING%20POLICY.pdf",
-        tag: "Policy",
+        pages: 2,
+        size: "412 KB",
       },
     ],
   },
@@ -83,6 +78,8 @@ const fadeUp = {
 };
 
 const InvestorRelations = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Layout>
       <PageHeader
@@ -142,46 +139,52 @@ const InvestorRelations = () => {
             </h2>
           </div>
 
-          <div className="space-y-12">
+          <div className="max-w-4xl mx-auto space-y-10">
             {documentGroups.map((group, groupIndex) => (
               <div key={group.title}>
-                <h3 className="text-xl font-heading font-bold text-foreground mb-6">{group.title}</h3>
-                <div className="grid md:grid-cols-2 gap-4">
+                <h3 className="text-xl font-heading font-bold text-foreground mb-5">{group.title}</h3>
+                <ul className="space-y-4">
                   {group.docs.map((doc, i) => (
-                    <motion.div
+                    <motion.li
                       key={doc.title}
                       custom={i + groupIndex}
-                      initial="hidden"
+                      initial={reduceMotion ? false : "hidden"}
                       whileInView="visible"
                       viewport={{ once: true }}
                       variants={fadeUp}
-                      className="bg-card rounded-xl p-6 border border-border hover:border-secondary/40 transition-colors"
+                      className="bg-card rounded-xl p-5 sm:p-6 border border-border hover:border-secondary/40 transition-colors"
                     >
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
-                          <FileText className="w-6 h-6 text-secondary" />
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                        <div className="flex items-start gap-4 flex-1 min-w-0">
+                          <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
+                            <FileText className="w-6 h-6 text-secondary" aria-hidden="true" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="inline-block bg-secondary/10 text-secondary text-xs font-semibold px-2.5 py-1 rounded-full mb-2">
+                              {doc.tag}
+                            </span>
+                            <h4 className="font-heading font-semibold text-foreground text-sm sm:text-base leading-snug [overflow-wrap:anywhere]">
+                              {doc.title}
+                            </h4>
+                            <p className="text-muted-foreground text-xs mt-1.5">
+                              PDF · {doc.pages} {doc.pages === 1 ? "page" : "pages"} · {doc.size}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <span className="inline-block bg-secondary/10 text-secondary text-xs font-semibold px-2.5 py-1 rounded-full mb-2">
-                            {doc.tag}
-                          </span>
-                          <h4 className="font-heading font-semibold text-foreground text-sm leading-snug mb-3">
-                            {doc.title}
-                          </h4>
-                          <a
-                            href={doc.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-light transition-colors"
-                          >
-                            <Download className="w-4 h-4" />
-                            Download PDF
-                          </a>
-                        </div>
+                        <a
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Download PDF: ${doc.title} (opens in a new tab)`}
+                          className="self-start sm:self-center shrink-0 ml-16 sm:ml-0 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-light transition-colors"
+                        >
+                          <Download className="w-4 h-4" aria-hidden="true" />
+                          Download PDF
+                        </a>
                       </div>
-                    </motion.div>
+                    </motion.li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </div>
