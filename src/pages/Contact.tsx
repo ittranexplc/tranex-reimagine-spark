@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import { contactDetails } from "@/data/contactInfo";
 
 const lagosOffices = [
   { name: "Head Office", address: "28-30 Oshodi Apapa Expressway, Lagos" },
@@ -30,11 +32,7 @@ const Contact = () => {
       <section className="section-padding bg-background">
         <div className="container">
           <div className="grid lg:grid-cols-3 gap-6 mb-16 max-w-md lg:max-w-5xl mx-auto">
-            {[
-              { icon: Phone, title: "Customer Care", info: "(234) 905-841-3864", link: "tel:+2349058413864" },
-              { icon: Mail, title: "Email", info: "info@tranex-ng.com", link: "mailto:info@tranex-ng.com" },
-              { icon: Clock, title: "Working Hours", info: "24/7", link: null },
-            ].map((item, i) => (
+            {contactDetails.map((item, i) => (
               <motion.div
                 key={item.title}
                 custom={i}
@@ -114,14 +112,12 @@ const Contact = () => {
           <p className="text-primary-foreground/70 max-w-md mx-auto mb-8">
             Schedule a convenient pickup for your packages today.
           </p>
-          <a
-            href="https://tranex-ng.com/Pickup.html"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/request-pickup"
             className="bg-secondary text-secondary-foreground px-8 py-3.5 rounded-lg font-semibold hover:bg-orange-dark transition-colors inline-block"
           >
             Request Pickup
-          </a>
+          </Link>
         </div>
       </section>
     </Layout>
